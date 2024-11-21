@@ -1,0 +1,91 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form action="registration.jsp" method="post">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" required></textarea><br><br>
+
+        <label for="contactNumber">Contact Number:</label>
+        <input type="text" id="contactNumber" name="contactNumber" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <%
+        // Database connection parameters
+        String dbURL = "jdbc:mysql://localhost:3306/your_database_name"; // Change to your database name
+        String dbUser  = "your_username"; // Change to your database username
+        String dbPass = "your_password"; // Change to your database password
+
+        // Check if the form is submitted
+        if (request.getMethod().equalsIgnoreCase("POST")) {
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            String address = request.getParameter("address");
+            String contactNumber = request.getParameter("contactNumber");
+
+            Connection conn = null;
+            PreparedStatement pstmt = null;
+
+            try {
+                // Load the MySQL JDBC driver
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                // Establish the connection
+                conn = DriverManager.getConnection(dbURL, dbUser , dbPass);
+
+                // SQL query to insert data
+                String sql = "INSERT INTO users (first_name, last_name, username, password, address, contact_number) VALUES (?, ?, ?, ?, ?, ?)";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, firstName);
+                pstmt.setString(2, lastName);
+                pstmt.setString(3, username);
+                pstmt.setString(4, password);
+                pstmt.setString(5, address);
+                pstmt.setString(6, contactNumber);
+
+                // Execute the insert operation
+                int rowsInserted = pstmt.executeUpdate();
+                if (rowsInserted > 0) {
+                    out.println("<p>Registration successful!</p>");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                out.println("<p>Error occurred while registering: " + e.getMessage() + "</p>");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+                out.println("<p>Database driver not found: " + e.getMessage() + "</p>");
+            } finally {
+                // Close resources
+                try {
+                    if (pstmt != null) pstmt.close();
+                    if (conn != null) conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    %>
+</body>
+</html>
