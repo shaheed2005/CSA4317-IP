@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Specification Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button[type="reset"] {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Laptop Specification Form</h2>
+
+<form action="#" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label>Operating System:</label>
+    <input type="checkbox" id="macOS" name="os" value="macOS">
+    <label for="macOS">macOS</label>
+    <input type="checkbox" id="windows" name="os" value="WINDOWS">
+    <label for="windows">WINDOWS</label>
+    <input type="checkbox" id="ubuntu" name="os" value="Ubuntu">
+    <label for="ubuntu">Ubuntu</label>
+
+    <label>Brand:</label>
+    <input type="radio" id="hp" name="brand" value="HP">
+    <label for="hp">HP</label>
+    <input type="radio" id="lenovo" name="brand" value="LENOVA">
+    <label for="lenovo">LENOVA</label>
+    <input type="radio" id="dell" name="brand" value="DELL">
+    <label for="dell">DELL</label>
+    <input type="radio" id="apple" name="brand" value="APPLE">
+    <label for="apple">APPLE</label>
+
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" rows="4" required></textarea>
+
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+</form>
+
+</body>
+</html>

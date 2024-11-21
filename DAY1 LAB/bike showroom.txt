@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bike Models</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bike Models</h2>
+    <div id="model-info">
+        <p>Select a brand to see the models and specifications.</p>
+    </div>
+
+    <script>
+        // Function to update the model info based on the selected brand
+        function updateModelInfo(brand) {
+            const modelInfo = document.getElementById('model-info');
+            switch (brand) {
+                case 'honda':
+                    modelInfo.innerHTML = `
+                        <h3>Honda Models</h3>
+                        <ul>
+                            <li>Honda CBR 650R - 649cc, 86 hp</li>
+                            <li>Honda CB500F - 471cc, 47 hp</li>
+                        </ul>
+                    `;
+                    break;
+                case 'yamaha':
+                    modelInfo.innerHTML = `
+                        <h3>Yamaha Models</h3>
+                        <ul>
+                            <li>Yamaha YZF-R3 - 321cc, 42 hp</li>
+                            <li>Yamaha MT-07 - 689cc, 75 hp</li>
+                        </ul>
+                    `;
+                    break;
+                case 'suzuki':
+                    modelInfo.innerHTML = `
+                        <h3>Suzuki Models</h3>
+                        <ul>
+                            <li>Suzuki GSX-R750 - 750cc, 148 hp</li>
+                            <li>Suzuki V-Strom 650 - 645cc, 70 hp</li>
+                        </ul>
+                    `;
