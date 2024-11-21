@@ -1,0 +1,27 @@
+<?php
+$states = "Mississippi, Alabama, Massachusetts, Kansas";
+$statesArray = explode(", ", $states);
+
+$endsWithXas = array_filter($statesArray, function($state) {
+    return preg_match('/xas$/i', trim($state));
+});
+
+$startsWithMEndsWithS = array_filter($statesArray, function($state) {
+    return preg_match('/^M.*s$/i', trim($state));
+});
+
+echo "<h3>All States:</h3>";
+echo "<pre>";
+print_r($statesArray);
+echo "</pre>";
+
+echo "<h3>States ending with 'xas':</h3>";
+echo "<pre>";
+print_r($endsWithXas);
+echo "</pre>";
+
+echo "<h3>States starting with 'M' and ending with 's':</h3>";
+echo "<pre>";
+print_r($startsWithMEndsWithS);
+echo "</pre>";
+?>

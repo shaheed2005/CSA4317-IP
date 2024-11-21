@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:output method="html" encoding="UTF-8" indent="yes"/>
+    <xsl:template match="/menu">
+        <html>
+            <head>
+                <title>Restaurant Menus</title>
+                <link rel="stylesheet" type="text/css" href="styles.css"/>
+            </head>
+            <body>
+                <h1>Restaurant Menus</h1>
+                <xsl:apply-templates select="restaurant"/>
+            </body>
+        </html>
+    </xsl:template>
+
+    <xsl:template match="restaurant">
+        <div class="restaurant">
+            <h2
