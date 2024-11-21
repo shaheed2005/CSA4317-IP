@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Image Size</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Get Image Size (Height & Width)</h1>
+    <input type="file" id="imageInput" accept="image/*">
+    <div id="imageInfo" style="margin-top: 20px;"></div>
+    <img id="preview" src="" alt="Image Preview" style="display: none;">
+
+    <script>
+        document.getElementById('imageInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const img = new Image();
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    img.src = e.target.result;
+                };
+
+                img.onload = function() {
+                    const width = img.width;
+                    const height = img.height;
+                    document.getElementById('imageInfo').innerHTML = `
+                        <p>Width: ${width}px</p>
+                        <p>Height: ${height}px</p>
+                    `;
+                    document.getElementById('preview').src = img.src;
+                    document.getElementById('preview').style.display = 'block';
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

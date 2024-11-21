@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .highlight {
+            background-color: yellow; /* Highlight color */
+        }
+        .styled-paragraph {
+            transition: all 0.3s; /* Smooth transition for style changes */
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Our College</h1>
+    <form id="styleForm">
+        <button type="button" id="changeButton">Change</button>
+    </form>
+    <p id="collegeParagraph" class="styled-paragraph">
+        Our college, <strong>ABC College</strong>, is dedicated to providing high-quality education. We offer a variety of programs in <strong>science</strong>, <strong>arts</strong>, and <strong>engineering</strong> to help students achieve their academic goals.
+    </p>
+
+    <script>
+        document.getElementById('changeButton').addEventListener('click', function() {
+            const paragraph = document.getElementById('collegeParagraph');
+            // Change font, font size, and color
+            paragraph.style.fontFamily = 'Courier New, monospace';
+            paragraph.style.fontSize = '20px';
+            paragraph.style.color = 'blue';
+        });
+
+        const boldWords = document.querySelectorAll('#collegeParagraph strong');
+        boldWords.forEach(word => {
+            word.addEventListener('mouseover', function() {
+                this.classList.add('highlight');
+            });
+            word.addEventListener('mouseout', function() {
+                this.classList.remove('highlight');
+            });
+        });
+    </script>
+</body>
+</html>

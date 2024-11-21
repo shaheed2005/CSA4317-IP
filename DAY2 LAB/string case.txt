@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Case Converter</title>
+    <script>
+        function convertString() {
+            // Get input from the user
+            let userInput = prompt("Please enter a string:");
+
+            // Check if the user entered something
+            if (userInput !== null) {
+                // Convert to uppercase and lowercase
+                let upperCase = userInput.toUpperCase();
+                let lowerCase = userInput.toLowerCase();
+
+                // Display the results
+                alert("Uppercase: " + upperCase + "\nLowercase: " + lowerCase);
+            } else {
+                alert("No input provided.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>String Case Converter</h1>
+    <button onclick="convertString()">Enter a String</button>
+</body>
+</html>
